@@ -2,7 +2,9 @@
 
 Telefon ekranı / arka kapak yapıştırırken kullanılan metal klipsin 3D yazıcıya uyarlanmış hali. Yapı orijinaliyle aynı: alt çene, kare gövde, gövdeden inen piston mil ve onun ucunda üst çene plakası, en üstte kapak ve tırtıllı topuz. Diş baskısı yok; vida ve somun hazır metal.
 
-![Montaj](img/assembly.png)
+![Klips](img/render_hero.png)
+
+![4'lü set telefonda](img/render_phone.png)
 
 ## Nasıl çalışır
 
@@ -29,7 +31,7 @@ PETG önerilir (PLA da olur). 0.2 mm katman, 4 duvar, %30+ dolgu. 4'lü set içi
 
 ## Montaj
 
-![Montaj sırası](img/exploded.png)
+![Montaj sırası](img/render_exploded.png)
 
 1. Yayı (varsa) pistonun miline geçirin. Pistonu gövdeye **üstten** sokun; mil alttaki deliğinden çıkar.
 2. Üst çeneyi yandan, mil ucundaki diske kaydırın; "tık" diye oturur.
@@ -53,3 +55,16 @@ PETG önerilir (PLA da olur). 0.2 mm katman, 4 duvar, %30+ dolgu. 4'lü set içi
 - `max_open`, `reach`, `W` – açıklık, derinlik, kalınlık
 
 STL üretmek için: `openscad -o stl/frame.stl -D 'part="frame"' lcd_clamp.scad`. Diğer `part` değerleri: `plunger`, `jaw`, `cap`, `knob`, `pad`, `plate`, `assembly`, `exploded`.
+
+## Render'lar
+
+`img/` klasöründeki görseller Blender Cycles ile üretildi:
+
+```sh
+cd render
+# sahneye gore parcalari montaj konumunda disa aktar (parts.scad: view=assembly|exploded, open=aciklik)
+openscad -o out/frame.stl -D 'part="none"' -D 'view="assembly"' -D 'comp="frame"' parts.scad   # frame jaw plunger cap nut screw knob pad1 pad2
+blender -b -P render.py -- out hero ../img/render_hero.png 160
+```
+
+Sahneler: `hero`, `phone` (açıklık 9.4 ile dışa aktarın), `exploded`.
