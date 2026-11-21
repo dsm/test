@@ -1,44 +1,55 @@
-# Ekran (LCD) Sabitleme Klipsi – 3D Baskı
+# Ekran (LCD) Sabitleme Klipsi – 3D Baskı + Metal M4 Vida
 
-Telefon ekranı / arka kapak yapıştırırken kullanılan metal klipsin 3D yazıcı için yeniden tasarlanmış hali. **Tamamen baskı**, metal vida/somun gerekmez.
+Telefon ekranı / arka kapak yapıştırırken kullanılan metal klipsin 3D yazıcıya uyarlanmış hali. Yapı orijinaliyle aynı: alt çene, kare gövde, gövdeden inen piston mil ve onun ucunda üst çene plakası, en üstte kapak ve tırtıllı topuz. Diş baskısı yok; vida ve somun hazır metal.
 
 ![Montaj](img/assembly.png)
 
-## Parçalar (1 klips için)
+## Nasıl çalışır
 
-| Dosya | Adet | Malzeme | Baskı yönü |
-|---|---|---|---|
-| `stl/frame.stl` – C gövde | 1 | PETG / PLA | Yan yatık (dosyadaki gibi) – destek yok |
-| `stl/jaw.stl` – kayar çene | 1 | PETG / PLA | Yan yatık, kanal yukarı – destek yok |
-| `stl/screw.stl` – vida + topuz | 1 | PETG / PLA | Topuz aşağıda, dik – destek yok |
-| `stl/nut.stl` – dişli somun | 1 | PETG / PLA | Düz – destek yok |
-| `stl/pad.stl` – koruma pedi | 2 | TPU (95A) | Düz |
+Topuzu sıkınca M4 vida pistonu iter ve üst çene aşağı iner. Topuzu gevşetince isteğe bağlı yay pistonu yukarı iter, çene kendiliğinden açılır. Yay takılmazsa çeneyi parmakla yukarı itmeniz yeterli.
 
-4'lü set için hepsini 4 kez basın. Ped basamıyorsanız 17×17 mm, ~1 mm keçe/silikon/EVA kesip yuvalara yapıştırın.
+## Basılacak parçalar (1 klips)
 
-**Önerilen ayarlar:** 0.4 nozul, 0.16–0.2 mm katman, 4 duvar (perimeter), %30+ dolgu. Gövde yan yatık basıldığı için katmanlar C profiline paraleldir; sıkma kuvveti katmanları ayırmaya çalışmaz.
+| Dosya | Adet | Baskı yönü |
+|---|---|---|
+| `stl/frame.stl` – gövde | 1 | Yan yatık (dosyadaki gibi), destek yok |
+| `stl/plunger.stl` – piston mil | 1 | Piston tablada, dik |
+| `stl/jaw.stl` – üst çene | 1 | Yan yatık, kanal yukarı |
+| `stl/cap.stl` – üst kapak | 1 | Düz yüz tablada |
+| `stl/knob.stl` – topuz | 1 | Sadece DIN 933 vida kullanılırsa |
+| `stl/pad.stl` – ped | 2 | TPU (yoksa 1 mm keçe/silikon kesin) |
+
+PETG önerilir (PLA da olur). 0.2 mm katman, 4 duvar, %30+ dolgu. 4'lü set için 4 kez basın.
+
+## Hazır metal parçalar (1 klips)
+
+- **1× M4×20 vida:** DIN 464 tırtıllı başlı (topuz basmaya gerek kalmaz) **veya** DIN 933 altıgen başlı vida + basılan topuz (başı topuzdaki altıgen yuvaya bastırın veya yapıştırın)
+- **1× M4 somun** (DIN 934)
+- **1× basma yayı (opsiyonel):** dış çap ≤ 10 mm, iç çap ≥ 6.6 mm, boy 18–20 mm, tel 0.5–0.6 mm
 
 ## Montaj
 
-1. Somunu gövdenin üst kolundaki altıgen yuvaya **alttan** bastırın (gevşekse bir damla yapıştırıcı).
-2. Vidayı yukarıdan somuna çevirerek takın, alt ucu kolun altından çıksın.
-3. Çeneyi yandan vidanın ucundaki diske kaydırın – "tık" diye oturur. Çenenin düz arka yüzü gövdeye dayanır, böylece dönmez.
-4. Pedleri alt kol ve çene altındaki yuvalara yapıştırın.
+![Montaj sırası](img/exploded.png)
 
-Topuzu çevirince çene aşağı iner (sıkar), geri çevirince disk çeneyi yukarı çeker.
+1. Yayı (varsa) pistonun miline geçirin. Pistonu gövdeye **üstten** sokun; mil alttaki deliğinden çıkar.
+2. Üst çeneyi yandan, mil ucundaki diske kaydırın; "tık" diye oturur.
+3. M4 somunu kapağın altındaki altıgen yuvaya bastırın.
+4. Kapağı gövdenin üstündeki kırlangıç kuyruğu kanala yandan kaydırın.
+5. Vidayı kapaktan geçirip somuna takın. Vida kapağın kayarak çıkmasını da engeller.
+6. Pedleri alt çenedeki yuvaya ve üst çenenin altına yapıştırın.
 
 ## Ölçüler
 
-- Gövde: 20 × 28 × 43 mm, vida ile toplam ≈ 60 mm
-- Çene açıklığı: 0 – 16 mm (pedlerle ≈ 15 mm)
-- Diş: Ø12 mm, 3 mm adım, 45° yanak (baskı dostu)
+- 16 × 20 mm taban, kapak üstüne kadar 54.7 mm (topuzla ≈ 64 mm)
+- Çene açıklığı 0–12 mm (pedlerle ≈ 0–11 mm)
 
-## Özelleştirme
+## Ayarlar
 
-`lcd_clamp.scad` dosyasını OpenSCAD'de açın (Customizer paneli):
+`lcd_clamp.scad` dosyasını OpenSCAD'de açın (Customizer):
 
-- `t_clear` – vida somunda sıkıysa 0.30–0.35 yapın, boşluklu ise 0.2
-- `nut_fit` – somun yuvaya girmiyorsa artırın
-- `max_open`, `reach`, `W` – açıklık, derinlik, genişlik
+- `slide_clr` – piston sıkı kayıyorsa artırın (0.3–0.35)
+- `cap_clr` – kapak kanala girmiyorsa artırın
+- `hex_clr` – somun yuvaya girmiyorsa artırın
+- `max_open`, `reach`, `W` – açıklık, derinlik, kalınlık
 
-STL üretmek için: `openscad -o stl/screw.stl -D 'part="screw"' lcd_clamp.scad` (`frame`, `jaw`, `nut`, `pad`, `plate`, `assembly`).
+STL üretmek için: `openscad -o stl/frame.stl -D 'part="frame"' lcd_clamp.scad`. Diğer `part` değerleri: `plunger`, `jaw`, `cap`, `knob`, `pad`, `plate`, `assembly`, `exploded`.
